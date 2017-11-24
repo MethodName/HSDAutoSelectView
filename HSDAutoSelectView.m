@@ -12,6 +12,8 @@
 #define D_W ([UIScreen mainScreen].bounds.size.width)
 #define D_H ([UIScreen mainScreen].bounds.size.height)
 #define IS_IPHONE_X    (([[UIScreen mainScreen] bounds].size.height) ==812)
+#define SELECTVIEW_HIGHT 264.0f //选择视图默认高
+#define ROW_HIGHT 44.0f //选择视图默认高
 
 typedef NS_ENUM(NSInteger, HSDAutoSelectViewPoint) {
     HSDAutoSelectViewPointTop = 0,
@@ -89,7 +91,7 @@ typedef NS_ENUM(NSInteger, HSDAutoSelectViewPoint) {
     //设置tableView代理
     [self.tableView setDelegate:self];
     [self.tableView setDataSource:self];
-   
+    [self.tableView setAlwaysBounceVertical:YES];
     //自适应位置
     [self autoPoint:atView];
     
@@ -97,6 +99,7 @@ typedef NS_ENUM(NSInteger, HSDAutoSelectViewPoint) {
     
     [[UIApplication sharedApplication].delegate.window addSubview:self];
     
+   
     
 }
 
@@ -139,56 +142,78 @@ typedef NS_ENUM(NSInteger, HSDAutoSelectViewPoint) {
 {
     //获取基于视图在window上面的frame
     CGRect atrect = [[UIApplication sharedApplication].delegate.window convertRect:atView.frame fromView:atView.superview];
-    
     //添加按钮位置视图和点击事件
     [self addTap:atrect];
     
-    CGFloat offset = 20;
-    if (IS_IPHONE_X) {
-        offset = 44;
-    }
-    
-    //计算frame能放下选择视图的可能性
-    CGFloat top = atrect.origin.y - offset;//顶部空间
-    CGFloat bottom = D_H - (atrect.origin.y + atrect.size.height)-offset;//底部空间
-    
-    if (bottom >= SELECTVIEW_HIGHT) {//如果底部空间大于选择视图的大小
-        CGRect rect = CGRectMake(atrect.origin.x-2, atrect.origin.y+atrect.size.height+4, atView.frame.size.width+4, SELECTVIEW_HIGHT);
-        [self.bottomView setFrame:rect];
-        
-        [self.tableView setFrame:CGRectMake(0, 2, rect.size.width, SELECTVIEW_HIGHT -4)];
-        
-        [self bezierPathHollowOut:atrect point:HSDAutoSelectViewPointBottom];
-    }
-    else if(top > SELECTVIEW_HIGHT) {//如果顶部空间大于选择视图的大小
-        CGRect rect = CGRectMake(atrect.origin.x-2, atrect.origin.y-(SELECTVIEW_HIGHT+4), atView.frame.size.width+4, SELECTVIEW_HIGHT);
-        [self.bottomView setFrame:rect];
-        
-        [self.tableView setFrame:CGRectMake(0, 2, rect.size.width, SELECTVIEW_HIGHT -4)];
-        
-        [self bezierPathHollowOut:atrect point:HSDAutoSelectViewPointTop];
-    }
-    else//顶部和底部的空间都没有选择视图的默认大小大，使用底部或者顶部空间大小作为选择视图大小
-    {
-        if(top > bottom)//顶部空间大，放顶部
-        {
-            CGRect rect = CGRectMake(atrect.origin.x-2, offset, atView.frame.size.width+4, top - offset);//预留空间
-            [self.bottomView setFrame:rect];
-            
-            [self.tableView setFrame:CGRectMake(0, 2, rect.size.width , rect.size.height -4)];
-            
-            [self bezierPathHollowOut:atrect point:HSDAutoSelectViewPointTop];
+    [self setHidden:YES];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        CGFloat offset = 20;
+        if (IS_IPHONE_X) {
+            offset = 44;
         }
-        else//反之则全部放底部
+        
+        CGFloat tableViewHeight = 44;
+        if (self.tableView.contentSize.height < SELECTVIEW_HIGHT && self.tableView.contentSize.height > 40)
         {
-            CGRect rect = CGRectMake(atrect.origin.x-2, atrect.origin.y+atrect.size.height+4, atView.frame.size.width+4, bottom - offset);//预留空间
+            tableViewHeight = self.tableView.contentSize.height;
+        }
+        else if(self.tableView.contentSize.height >= SELECTVIEW_HIGHT)
+        {
+            tableViewHeight = SELECTVIEW_HIGHT;
+        }
+        
+        
+        //计算frame能放下选择视图的可能性
+        CGFloat top = atrect.origin.y - offset;//顶部空间
+        CGFloat bottom = D_H - (atrect.origin.y + atrect.size.height)-offset;//底部空间
+        
+        if (bottom >= SELECTVIEW_HIGHT) {//如果底部空间大于选择视图的大小
+            CGRect rect = CGRectMake(atrect.origin.x-2, atrect.origin.y+atrect.size.height+2, atView.frame.size.width+4, tableViewHeight +2);
             [self.bottomView setFrame:rect];
             
-            [self.tableView setFrame:CGRectMake(0, 2, rect.size.width , rect.size.height -4)];
+            [self.tableView setFrame:CGRectMake(0, 1, rect.size.width, tableViewHeight)];
             
             [self bezierPathHollowOut:atrect point:HSDAutoSelectViewPointBottom];
         }
-    }
+        else if(top > SELECTVIEW_HIGHT) {//如果顶部空间大于选择视图的大小
+            CGRect rect = CGRectMake(atrect.origin.x-2, atrect.origin.y-(tableViewHeight+2), atView.frame.size.width+4, tableViewHeight +2);
+            [self.bottomView setFrame:rect];
+            
+            [self.tableView setFrame:CGRectMake(0, 1, rect.size.width, tableViewHeight)];
+            
+            [self bezierPathHollowOut:atrect point:HSDAutoSelectViewPointTop];
+        }
+        else//顶部和底部的空间都没有选择视图的默认大小大，使用底部或者顶部空间大小作为选择视图大小
+        {
+            if(top > bottom)//顶部空间大，放顶部
+            {
+                CGRect rect = CGRectMake(atrect.origin.x-2, offset, atView.frame.size.width+4, top);//预留空间
+                [self.bottomView setFrame:rect];
+                
+                [self.tableView setFrame:CGRectMake(0, 1, rect.size.width , rect.size.height -2)];
+                
+                [self bezierPathHollowOut:atrect point:HSDAutoSelectViewPointTop];
+            }
+            else//反之则全部放底部
+            {
+                CGRect rect = CGRectMake(atrect.origin.x-2, atrect.origin.y+atrect.size.height+2, atView.frame.size.width+4, bottom);//预留空间
+                [self.bottomView setFrame:rect];
+                
+                [self.tableView setFrame:CGRectMake(0, 1, rect.size.width , rect.size.height -2)];
+                
+                [self bezierPathHollowOut:atrect point:HSDAutoSelectViewPointBottom];
+            }
+        }
+        [self setHidden:NO];
+        
+        if (self.selectIndex != -1 && self.dataArray.count > self.selectIndex) {
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.selectIndex inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
+        }
+        
+    });
+    
+    
+    
     
     
    
@@ -249,8 +274,6 @@ typedef NS_ENUM(NSInteger, HSDAutoSelectViewPoint) {
         shapeLayer.path = path.CGPath;
         self.layer.mask = shapeLayer;
     }
-    
-   
 }
 
 
@@ -266,7 +289,7 @@ typedef NS_ENUM(NSInteger, HSDAutoSelectViewPoint) {
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44.0f;
+    return ROW_HIGHT;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -279,8 +302,9 @@ typedef NS_ENUM(NSInteger, HSDAutoSelectViewPoint) {
     if (indexPath.row < self.dataArray.count) {
         NSString *title = self.dataArray[indexPath.row];
         [cell.textLabel setText:title];
+        [cell.textLabel setFont:[UIFont systemFontOfSize:14.0f]];
         
-        if (self.selectIndex != -1 && self.selectIndex == indexPath.row) {
+        if (self.selectIndex != -1 && self.selectIndex == indexPath.row && self.selectIndex < self.dataArray.count) {
             //设置自定义图片勾选样式
 //            UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 24, 24)];
 //            [img setImage:[UIImage imageNamed:@"auto_selected"]];
@@ -292,6 +316,13 @@ typedef NS_ENUM(NSInteger, HSDAutoSelectViewPoint) {
             //cell.accessoryView = nil;
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
+        
+        if (indexPath.row != 0) {
+            UIView * line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 0.5)];
+            [line setBackgroundColor:[UIColor lightGrayColor]];
+            [cell addSubview:line];
+        }
+        
     }
     
     return cell;

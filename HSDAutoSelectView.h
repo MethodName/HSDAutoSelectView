@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-#define SELECTVIEW_HIGHT 300.0f //选择视图高
+
 
 
 
