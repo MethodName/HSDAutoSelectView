@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5jX-9L-AlQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="6oq-H7-zla"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wZc-0U-uh2">
+                                <rect key="frame" x="16" y="44" width="112.5" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="Tti-ar-20t"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
+                                <state key="normal" title="下拉列表" backgroundImage="select_group">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectBTClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0yP-lb-Ayd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lWT-Bt-4rX">
+                                <rect key="frame" x="16" y="607" width="112.5" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="Nph-Cy-3aw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
+                                <state key="normal" title="下拉列表" backgroundImage="select_group">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectBTClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KSB-ZJ-oeg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZwF-UD-jVp">
+                                <rect key="frame" x="246" y="607" width="112.5" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="Lqc-St-Xff"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
+                                <state key="normal" title="下拉列表" backgroundImage="select_group">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectBTClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9xZ-1g-LuV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hc2-Dl-lq3">
+                                <rect key="frame" x="246" y="44" width="112.5" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="yVm-UZ-EPg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
+                                <state key="normal" title="下拉列表" backgroundImage="select_group">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectBTClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dpq-m1-GKG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTX-xM-2KY">
+                                <rect key="frame" x="75" y="315.5" width="225" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="u0c-Wn-Zy9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
+                                <state key="normal" title="下拉列表" backgroundImage="select_group">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectBTClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Bum-SY-hkm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lWT-Bt-4rX" firstAttribute="width" secondItem="wZc-0U-uh2" secondAttribute="width" id="107-75-Fwg"/>
+                            <constraint firstItem="ZwF-UD-jVp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="330-Ge-G9o"/>
+                            <constraint firstItem="wZc-0U-uh2" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.3" id="4v5-Mb-0jJ"/>
+                            <constraint firstItem="hc2-Dl-lq3" firstAttribute="top" secondItem="5jX-9L-AlQ" secondAttribute="bottom" constant="24" id="52g-bg-lwo"/>
+                            <constraint firstItem="lTX-xM-2KY" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.6" id="5Nw-Dy-6fH"/>
+                            <constraint firstItem="lTX-xM-2KY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="82G-jy-tdY"/>
+                            <constraint firstItem="lWT-Bt-4rX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="92k-bM-pzq"/>
+                            <constraint firstItem="hc2-Dl-lq3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="AiI-Rz-Mer"/>
+                            <constraint firstItem="ZwF-UD-jVp" firstAttribute="width" secondItem="lWT-Bt-4rX" secondAttribute="width" id="HUk-sN-Qck"/>
+                            <constraint firstItem="6oq-H7-zla" firstAttribute="top" secondItem="lWT-Bt-4rX" secondAttribute="bottom" constant="24" id="IR8-54-VhV"/>
+                            <constraint firstItem="wZc-0U-uh2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="RjU-Ox-XKz"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wZc-0U-uh2" secondAttribute="trailing" constant="20" symbolic="YES" id="Tbe-DQ-N7O"/>
+                            <constraint firstItem="lTX-xM-2KY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aon-vJ-28F"/>
+                            <constraint firstItem="wZc-0U-uh2" firstAttribute="top" secondItem="5jX-9L-AlQ" secondAttribute="bottom" constant="24" id="bWZ-DW-IrH"/>
+                            <constraint firstItem="hc2-Dl-lq3" firstAttribute="width" secondItem="wZc-0U-uh2" secondAttribute="width" id="fwm-k0-lpv"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lWT-Bt-4rX" secondAttribute="trailing" constant="20" symbolic="YES" id="lvM-7Z-uTX"/>
+                            <constraint firstAttribute="trailing" secondItem="hc2-Dl-lq3" secondAttribute="trailing" constant="16" id="tYs-SZ-tB0"/>
+                            <constraint firstAttribute="trailing" secondItem="ZwF-UD-jVp" secondAttribute="trailing" constant="16" id="vMi-kz-wX2"/>
+                            <constraint firstItem="6oq-H7-zla" firstAttribute="top" secondItem="ZwF-UD-jVp" secondAttribute="bottom" constant="24" id="wqY-BU-l8c"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="select_group" width="26" height="36"/>
+    </resources>
+</document>
