@@ -1,11 +1,13 @@
 # HSDAutoSelectView
 
 
-######效果图（一）
+自动适应下拉选择控件，类似于网页下拉列表
+
+
 ![img](https://github.com/MethodName/HSDAutoSelectView/blob/master/2017-11-24%2015_22_34.gif)
 
-######效果图（二）
-自动适应下拉选择控件，类似于网页下拉列表
+
+
 
 ![img](https://github.com/MethodName/HSDAutoSelectView/blob/master/2017-11-23%2013_53_04.gif)
 
